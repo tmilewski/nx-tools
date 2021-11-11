@@ -8,6 +8,5 @@ export const createPrismaBuilder =
     if (!options.schema) {
       options.schema = join(context?.workspace.projects[context.projectName].root, 'schema.prisma');
     }
-
     return runCommand(command, options);
   };

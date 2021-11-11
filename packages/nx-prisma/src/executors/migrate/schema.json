@@ -13,23 +13,17 @@
       "type": "string",
       "description": "The name of the migration. If no name is provided, the CLI will prompt you."
     },
-    "options": {
-      "type": "object",
-      "description": "Optional flags",
-      "properties": {
-        "create-only": {
-          "type": "boolean",
-          "description": "Creates a new migration based on the changes in the schema but does not apply that migration."
-        },
-        "skip-seed": {
-          "type": "boolean",
-          "description": "Skip triggering seed."
-        },
-        "skip-generate": {
-          "type": "boolean",
-          "description": "Skip triggering generators (for example, Prisma Client)."
-        }
-      }
+    "createOnly": {
+      "type": "boolean",
+      "description": "Creates a new migration based on the changes in the schema but does not apply that migration."
+    },
+    "skipSeed": {
+      "type": "boolean",
+      "description": "Skip triggering seed."
+    },
+    "skipGenerate": {
+      "type": "boolean",
+      "description": "Skip triggering generators (for example, Prisma Client)."
     }
   },
   "required": []

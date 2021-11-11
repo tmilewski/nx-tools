@@ -14,20 +14,15 @@ export interface PrismaResetSchema {
    */
   schema?: string;
   /**
-   * Optional flags
+   * Skip the confirmation prompt.
    */
-  options?: {
-    /**
-     * Skip the confirmation prompt.
-     */
-    force?: boolean;
-    /**
-     * Skip triggering seed.
-     */
-    'skip-seed'?: boolean;
-    /**
-     * Skip triggering generators (for example, Prisma Client).
-     */
-    'skip-generate'?: boolean;
-  };
+  force?: boolean;
+  /**
+   * Skip triggering seed.
+   */
+  skipSeed?: boolean;
+  /**
+   * Skip triggering generators (for example, Prisma Client).
+   */
+  skipGenerate?: boolean;
 }

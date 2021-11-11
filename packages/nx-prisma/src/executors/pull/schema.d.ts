@@ -14,16 +14,11 @@ export interface PrismaPullSchema {
    */
   schema?: string;
   /**
-   * Optional flags
+   * Force overwrite of manual changes made to schema.
    */
-  options?: {
-    /**
-     * Force overwrite of manual changes made to schema.
-     */
-    force?: boolean;
-    /**
-     * Prints the created schema.prisma to the screen instead of writing it to the filesystem.
-     */
-    print?: boolean;
-  };
+  force?: boolean;
+  /**
+   * Prints the created schema.prisma to the screen instead of writing it to the filesystem.
+   */
+  print?: boolean;
 }

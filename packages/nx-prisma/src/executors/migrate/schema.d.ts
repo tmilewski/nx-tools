@@ -15,20 +15,15 @@ export interface PrismaMigrateSchema {
    */
   name?: string;
   /**
-   * Optional flags
+   * Creates a new migration based on the changes in the schema but does not apply that migration.
    */
-  options?: {
-    /**
-     * Creates a new migration based on the changes in the schema but does not apply that migration.
-     */
-    'create-only'?: boolean;
-    /**
-     * Skip triggering seed.
-     */
-    'skip-seed'?: boolean;
-    /**
-     * Skip triggering generators (for example, Prisma Client).
-     */
-    'skip-generate'?: boolean;
-  };
+  createOnly?: boolean;
+  /**
+   * Skip triggering seed.
+   */
+  skipSeed?: boolean;
+  /**
+   * Skip triggering generators (for example, Prisma Client).
+   */
+  skipGenerate?: boolean;
 }

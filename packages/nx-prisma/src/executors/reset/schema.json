@@ -9,23 +9,17 @@
       "type": "string",
       "description": "The path to the prisma schema eg. 'prisma/schema.prisma'"
     },
-    "options": {
-      "type": "object",
-      "description": "Optional flags",
-      "properties": {
-        "force": {
-          "type": "boolean",
-          "description": "Skip the confirmation prompt."
-        },
-        "skip-seed": {
-          "type": "boolean",
-          "description": "Skip triggering seed."
-        },
-        "skip-generate": {
-          "type": "boolean",
-          "description": "Skip triggering generators (for example, Prisma Client)."
-        }
-      }
+    "force": {
+      "type": "boolean",
+      "description": "Skip the confirmation prompt."
+    },
+    "skipSeed": {
+      "type": "boolean",
+      "description": "Skip triggering seed."
+    },
+    "skipGenerate": {
+      "type": "boolean",
+      "description": "Skip triggering generators (for example, Prisma Client)."
     }
   },
   "required": []

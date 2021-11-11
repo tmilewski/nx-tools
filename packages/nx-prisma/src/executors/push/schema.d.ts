@@ -14,20 +14,15 @@ export interface PrismaPushSchema {
    */
   schema?: string;
   /**
-   * Optional flags
+   * Skip generation of artifacts such as Prisma Client.
    */
-  options?: {
-    /**
-     * Skip generation of artifacts such as Prisma Client.
-     */
-    'skip-generate'?: boolean;
-    /**
-     * Resets the database and then updates the schema - useful if you need to start from scratch due to unexecutable migrations.
-     */
-    'force-reset'?: boolean;
-    /**
-     * Ignore data loss warnings. This option is required if as a result of making the schema changes, data may be lost.
-     */
-    'accept-data-loss'?: boolean;
-  };
+  skipGenerate?: boolean;
+  /**
+   * Resets the database and then updates the schema - useful if you need to start from scratch due to unexecutable migrations.
+   */
+  forceReset?: boolean;
+  /**
+   * Ignore data loss warnings. This option is required if as a result of making the schema changes, data may be lost.
+   */
+  acceptDataLoss?: boolean;
 }

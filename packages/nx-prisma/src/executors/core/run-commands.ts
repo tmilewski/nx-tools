@@ -1,21 +1,23 @@
+import { names } from '@nrwl/devkit';
 import { exec, startGroup } from '@nx-tools/core';
 import { info } from 'console';
 
 export interface PrismaBuilderOptions {
   schema?: string;
-  options?: Record<string, boolean>;
+  [k: string]: any;
 }
 
 export interface PrismaCommands<T extends PrismaBuilderOptions> {
   description: string;
   command: string;
+  flags?: (keyof T)[];
 }
 
-const extractArgs = <T extends PrismaBuilderOptions>(options: T) => {
+const extractArgs = <T extends PrismaBuilderOptions>(options: T, flags: (keyof T)[]) => {
   const args = [];
 
   for (const [key, value] of Object.entries(options)) {
-    if (key !== 'options') {
+    if (!flags.includes(key)) {
       args.push(`--${key}=${value}`);
     }
   }
@@ -23,30 +25,29 @@ const extractArgs = <T extends PrismaBuilderOptions>(options: T) => {
   return args;
 };
 
-const extractFlags = <T extends PrismaBuilderOptions>(options: Record<string, boolean> = {}) => {
-  const flags = [];
-
+const extractFlags = <T extends PrismaBuilderOptions>(options: Record<string, boolean> = {}, flags: (keyof T)[]) => {
+  const parsedFlags = [];
   for (const [key, value] of Object.entries(options)) {
-    if (value) {
-      flags.push(`--${key}`);
+    if (flags.includes(key) && value) {
+      parsedFlags.push(`--${names(key).fileName}`);
     }
   }
 
-  return flags;
+  return parsedFlags;
 };
 
 export const runCommand = async <T extends PrismaBuilderOptions>(
-  { description, command }: PrismaCommands<T>,
+  { description, command, flags = [] }: PrismaCommands<T>,
   options: T,
 ): Promise<{ success: true }> => {
   startGroup(description, 'Nx Prisma');
 
-  const commandArgs = extractArgs(options);
-  const commandFlags = extractFlags(options.options);
+  const commandArgs = extractArgs(options, flags);
+  const commandFlags = extractFlags(options, flags);
 
   const args = [...commandArgs, ...commandFlags];
 
-  info(`Running: ${command} ${args}`);
+  info(`Running: ${command} ${args.join(' ')}`);
 
   await exec(command, args);
 

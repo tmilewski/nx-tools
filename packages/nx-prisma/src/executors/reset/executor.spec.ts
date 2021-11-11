@@ -3,9 +3,7 @@ import { PrismaResetSchema } from './schema';
 
 const options: PrismaResetSchema = {
   schema: 'packages/nx-prisma/tests/schema.prisma',
-  options: {
-    force: true,
-  },
+  force: true,
 };
 
 export const resetSuite = () =>
